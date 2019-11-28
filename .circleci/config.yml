@@ -1,0 +1,21 @@
+version: 2
+jobs:
+  make me a pretzel:
+    docker:
+    - image: circleci/ruby:latest
+    steps:
+    - checkout
+    - run:
+        command: |
+          set +x
+          git clone git@github.com:gocardless/healthcheck.git || \
+          echo "Something went wrong, please let Developer Enablement know"
+          echo "Everything seems to be hooked-up properly. Here's a 🥐!"
+    environment:
+    - CIRCLE_COMPARE_URL: https://github.com/gocardless/fully-automated-repository-created-by-appetiser/compare/d856c4949ca47671e3740334aabf067d5a4000cb...442219df76c0fc4a40b5d2dc09fee8ca95c1296b
+workflows:
+  version: 2
+  make me a pretzel:
+    jobs:
+    - make me a pretzel
+    
